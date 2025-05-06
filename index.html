@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+  <meta charset="UTF-8">
+  <title>Hvelog | خاطرات عجیب شما</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      direction: rtl;
+      margin: 0;
+      background-color: #e0f7fa;
+    }
+
+    /* لودینگ */
+    #loader {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      background: #e0f7fa;
+      z-index: 9999;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .dots {
+      display: flex;
+      gap: 10px;
+    }
+
+    .dots span {
+      width: 15px;
+      height: 15px;
+      background-color: #00acc1;
+      border-radius: 50%;
+      animation: bounce 0.6s infinite alternate;
+    }
+
+    .dots span:nth-child(2) {
+      animation-delay: 0.2s;
+    }
+
+    .dots span:nth-child(3) {
+      animation-delay: 0.4s;
+    }
+
+    @keyframes bounce {
+      to {
+        transform: translateY(-15px);
+        opacity: 0.6;
+      }
+    }
+
+    header {
+      background-color: #00bcd4;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    header img {
+      height: 80px;
+      width: 80px;
+      border-radius: 50%;
+      margin-bottom: 10px;
+    }
+
+    nav {
+      background-color: #4dd0e1;
+      display: flex;
+      justify-content: center;
+      padding: 10px;
+      gap: 20px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      background-color: #00acc1;
+      padding: 8px 16px;
+      border-radius: 8px;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      background-color: #00838f;
+    }
+
+    section {
+      padding: 20px;
+    }
+
+    .post {
+      background-color: white;
+      padding: 15px;
+      margin-bottom: 10px;
+      border-radius: 10px;
+      box-shadow: 0 0 5px #aaa;
+    }
+
+    .post img {
+      display: block;
+      margin: 10px auto;
+      max-width: 90%;
+      border-radius: 10px;
+    }
+
+    .comments {
+      margin-top: 20px;
+      border-top: 1px solid #ddd;
+      padding-top: 10px;
+    }
+
+    .comment {
+      background-color: #f5f5f5;
+      padding: 10px;
+      margin-bottom: 10px;
+      border-radius: 5px;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      margin: 5px 0 15px 0;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      padding: 10px 20px;
+      background-color: #00acc1;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #00838f;
+    }
+
+    footer {
+      text-align: center;
+      background-color: #00bcd4;
+      color: white;
+      padding: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- لودینگ -->
+  <div id="loader">
+    <div class="dots">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </div>
+
+  <header>
+    <img src="hvelog-logo.png" alt="Hvelog Logo" id="logo">
+    <h1>Hvelog</h1>
+    <p>خاطرات عجیب شما</p>
+  </header>
+
+  <nav>
+    <a href="#home">خانه</a>
+    <a href="#posts">پست‌ها</a>
+    <a href="#add-post">افزودن پست</a>
+    <a href="#contact">ارتباط با ما</a>
+    <a href="#about">درباره ما</a>
+  </nav>
+
+  <section id="home">
+    <h2>استارت وب سایت</h2>
+    <div class="post">
+      <p>خاطراتت رو اینجا بنویس..<br>اینجا دور هم خاطرات هم رو می‌خونیم...</p>
+    </div>
+  </section>
+
+  <section id="posts">
+    <h2>پست‌های من</h2>
+    <div id="post-list"></div>
+  </section>
+
+  <section id="add-post">
+    <h2>افزودن پست جدید</h2>
+    <input type="text" id="post-title" placeholder="عنوان پست">
+    <textarea id="post-content" placeholder="متن پستت رو اینجا بنویس..." rows="5"></textarea>
+    <input type="file" id="post-image" accept="image/*">
+    <button id="add-post-btn">افزودن پست</button>
+  </section>
+
+  <section id="contact">
+    <h2>ارتباط با ما</h2>
+    <p>برای ارتباط با ما از طریق ایمیل زیر با ما تماس بگیرید:</p>
+    <p><a href="mailto:hsnshapwrjany97@gmail.com">hsnshapwrjany97@gmail.com</a></p>
+  </section>
+
+  <section id="about">
+    <h2>درباره ما</h2>
+    <p>
+      Hvelog یک وبلاگ شخصی است که در آن می‌توانید خاطرات، تجربیات و احساسات خود را با دیگران به اشتراک بگذارید. اینجا جایی است برای روایت داستان‌های عجیب و غریب، لحظات خاص و یادگاری‌هایی که دوست دارید ثبت کنید. 
+      هدف ما ایجاد یک فضای صمیمی و دوستانه برای همه است تا بدون هیچ ترسی، حرف دلشان را بیان کنند.
+    </p>
+    <p style="color: green; font-weight: bold;">
+      به هیچ وجه از شما و خاطراتتان سوءاستفاده نمی‌شود. این وب‌سایت کاملاً امن است.
+    </p>
+  </section>
+
+  <footer>
+    ساخته شده توسط hvelog.com
+  </footer>
+
+  <script>
+    window.addEventListener("load", function () {
+      const loader = document.getElementById("loader");
+      loader.style.opacity = "0";
+      setTimeout(() => {
+        loader.style.display = "none";
+      }, 500);
+    });
+
+    document.getElementById("add-post-btn").addEventListener("click", function () {
+      const title = document.getElementById("post-title").value.trim();
+      const content = document.getElementById("post-content").value.trim();
+      const imageInput = document.getElementById("post-image");
+      const imageFile = imageInput.files[0];
+
+      if (!title && !content && !imageFile) {
+        alert("لطفاً حداقل یک عنوان، متن یا تصویر وارد کن.");
+        return;
+      }
+
+      const postList = document.getElementById("post-list");
+      const post = document.createElement("div");
+      post.className = "post";
+
+      let postHTML = "";
+      if (title) postHTML += `<h3>${title}</h3>`;
+
+      if (imageFile) {
+        const reader = new FileReader();
+        reader.onload = function (e) {
+          postHTML += `<img src="${e.target.result}" alt="عکس پست">`;
+          if (content) postHTML += `<p>${content}</p>`;
+          post.innerHTML = postHTML;
+          postList.prepend(post);
+          appendCommentSection(post);
+        };
+        reader.readAsDataURL(imageFile);
+      } else {
+        if (content) postHTML += `<p>${content}</p>`;
+        post.innerHTML = postHTML;
+        postList.prepend(post);
+        appendCommentSection(post);
+      }
+
+      document.getElementById("post-title").value = "";
+      document.getElementById("post-content").value = "";
+      document.getElementById("post-image").value = "";
+    });
+
+    function appendCommentSection(post) {
+      const commentSection = document.createElement("div");
+      commentSection.className = "comments";
+      const commentInput = document.createElement("textarea");
+      commentInput.placeholder = "نظر خود را بنویسید...";
+      const commentButton = document.createElement("button");
+      commentButton.textContent = "ارسال نظر";
+      
+      commentButton.addEventListener("click", function () {
+        const commentText = commentInput.value.trim();
+        if (commentText) {
+          const comment = document.createElement("div");
+          comment.className = "comment";
+          comment.textContent = commentText;
+          commentSection.appendChild(comment);
+          commentInput.value = "";
+        }
+      });
+
+      post.appendChild(commentSection);
+      post.appendChild(commentInput);
+      post.appendChild(commentButton);
+    }
+  </script>
+
+</body>
+</html>
